@@ -15,24 +15,32 @@ public class LampEntity extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = -5422186499157642733L;
 
+	
+	public LampEntity() {
+
+	}
+	
+	public LampEntity(String code, long gatewayId) {
+		this.code = code;
+		this.gatewayId = gatewayId;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//TODO Set sequence so that it doesn't start with "0"
 	private Long Id;
 	
 	@Column(name = "code", nullable = false, length=10, unique=true)
 	private String code;
 	
-	@Column(name = "state", nullable = false, length = 5)
-	private String state;
-	
 	@Column(name = "gateway_id")
 	private Long gatewayId;
 	
-
+	
 	public Long getId() {
 		return Id;
 	}
-
+	
 	public void setId(Long id) {
 		Id = id;
 	}
@@ -43,14 +51,6 @@ public class LampEntity extends BaseEntity implements Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
 	}
 
 	public Long getGatewayId() {

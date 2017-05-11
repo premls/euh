@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
 
     private static Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(value ={ BaseException.class, Throwable.class})
+    @ExceptionHandler(value ={ Throwable.class})
     @ResponseBody
     public ResponseEntity<Void> exception(final BaseException e, final Model model) {
     	logger.error("Exception during execution of ", e);

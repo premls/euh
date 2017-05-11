@@ -16,6 +16,9 @@ import javax.persistence.Transient;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.annotation.CreatedDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @MappedSuperclass
 public class BaseEntity {
@@ -25,10 +28,12 @@ public class BaseEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "created", nullable = false)
+	@CreatedDate
 	private Date created;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "updated", nullable = false)
+	@CreatedDate
 	private Date updated;
 
 	@PrePersist
@@ -68,6 +73,24 @@ public class BaseEntity {
 	    }
 
 	    return fields;
+	}
+
+	@JsonIgnore
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	@JsonIgnore
+	public Date getUpdated() {
+		return updated;
+	}
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
 	}
 	
 }

@@ -29,7 +29,7 @@ public class AppConfig {
         return new Docket(DocumentationType.SWAGGER_2)
         		.select()                                  
                 .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot")))            
-                .paths(PathSelectors.ant("/api/*"))                          
+                .paths(PathSelectors.ant("/api/**"))                          
                 .build()
                 .apiInfo(apiInfo());
     }

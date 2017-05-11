@@ -1,11 +1,17 @@
 package mypoc.euh.service;
 
+import java.util.List;
+
+import mypoc.euh.entity.LampEntity;
 import mypoc.euh.exception.BaseException;
-import mypoc.euh.io.CreateLampDTO;
 
 public interface LampService {
 
-	void create(CreateLampDTO lamp) throws BaseException;
+	void create(LampEntity lamp) throws BaseException;
 
-	void getAll();
+	List<LampEntity> getAll();
+
+	void update(LampEntity lamp) throws BaseException;
+
+	LampEntity getLampDetails(Long id) throws BaseException;
 }
